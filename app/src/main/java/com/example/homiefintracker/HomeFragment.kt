@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +23,9 @@ class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var transactionObject: ArrayList<HomeTransactionsModel>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,6 +40,32 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        dataInitialize()
+        recyclerView = view.findViewById(R.id.homeRecyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        recyclerView.setHasFixedSize(true)
+        recyclerView.adapter = HomeRecyclerViewAdapter(transactionObject)
+
+    }
+
+    private fun dataInitialize() {
+        transactionObject = arrayListOf<HomeTransactionsModel>()
+        transactionObject.add(HomeTransactionsModel( R.drawable.ic_money,"105,000", "PETROL", "60%"))
+        transactionObject.add(HomeTransactionsModel( R.drawable.ic_calendar,"5,000", "PETROL", "10%"))
+        transactionObject.add(HomeTransactionsModel( R.drawable.ic_money,"5,000", "PETROL", "5%"))
+        transactionObject.add(HomeTransactionsModel( R.drawable.ic_arrow_back,"5,000", "PETROL", "5%"))
+        transactionObject.add(HomeTransactionsModel( R.drawable.ic_arrow_forward,"5,000", "PETROL", "5%"))
+        transactionObject.add(HomeTransactionsModel( R.drawable.ic_expense,"5,000", "PETROL", "8%"))
+        transactionObject.add(HomeTransactionsModel( R.drawable.ic_add,"5,000", "PETROL", ".4%"))
+        transactionObject.add(HomeTransactionsModel( R.drawable.ic_calendar,"5,000", "PETROL", ".1%"))
+        transactionObject.add(HomeTransactionsModel( R.drawable.ic_calendar,"5,000", "PETROL", ".2%"))
+        transactionObject.add(HomeTransactionsModel( R.drawable.ic_expense,"5,000", "PETROL", ".3%"))
     }
 
     companion object {

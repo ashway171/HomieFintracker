@@ -4,35 +4,35 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.example.homiefintracker.databinding.ActivityHomeBinding
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class HomeActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityHomeBinding
+
     private lateinit var animatedBottomBar: AnimatedBottomBar
-    private lateinit var fragmentManager: FragmentManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        animatedBottomBar = findViewById(R.id.anim_bottom_bar)
-
-        animatedBottomBar.onTabSelected
+        binding.animBottomBar.onTabSelected
 
         // Setting up the view pager
-        val viewPager: ViewPager2 = findViewById(R.id.view_pager)
         val fragmentList: ArrayList<Fragment> = arrayListOf(
             HomeFragment(),
             ManagementFragment(),
             HistoryFragment()
         )
         val pagerAdapter = ViewPagerAdapter(fragmentList, this)
-        viewPager.adapter = pagerAdapter
+        binding.viewPager.adapter = pagerAdapter
 
-        // This links animated bottom bar to view pager
-        animatedBottomBar.setupWithViewPager2(viewPager)
+        // Linking animated bottom bar to view pager
+        binding.animBottomBar.setupWithViewPager2(binding.viewPager)
 
     }
 }
