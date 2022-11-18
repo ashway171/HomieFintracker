@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,6 +27,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var transactionObject: ArrayList<HomeTransactionsModel>
+    private lateinit var floatingButton: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +54,17 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = HomeRecyclerViewAdapter(transactionObject)
+
+        // Click Listener for Add Amount BottomSheet
+        floatingButton= view.findViewById(R.id.fab)
+
+        floatingButton.setOnClickListener{
+
+            val dialog = activity?.let { it1 -> BottomSheetDialog(it1) }
+            val view = layoutInflater.inflate(R.layout.add_amount_bottomsheet, null)
+            dialog?.setContentView(view)
+            dialog?.show()
+        }
 
     }
 
