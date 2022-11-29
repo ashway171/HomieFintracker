@@ -1,10 +1,12 @@
 package com.example.homiefintracker
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -28,6 +30,7 @@ class HomeFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var transactionObject: ArrayList<HomeTransactionsModel>
     private lateinit var floatingButton: FloatingActionButton
+    private lateinit var expenseImageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +67,12 @@ class HomeFragment : Fragment() {
             val view = layoutInflater.inflate(R.layout.add_amount_bottomsheet, null)
             dialog?.setContentView(view)
             dialog?.show()
+
+            // Listener for Add Expense Activity
+            expenseImageView = view.findViewById(R.id.expense_IV_BottomSheet)
+            expenseImageView.setOnClickListener{
+                activity?.startActivity(Intent(activity, AddExpenseActivity::class.java))
+            }
         }
 
     }
