@@ -1,4 +1,4 @@
-package com.example.homiefintracker
+package com.example.homiefintracker.adapters
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment

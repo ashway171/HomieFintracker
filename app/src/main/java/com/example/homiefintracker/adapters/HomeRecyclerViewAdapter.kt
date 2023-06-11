@@ -1,4 +1,4 @@
-package com.example.homiefintracker
+package com.example.homiefintracker.adapters
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -9,6 +9,8 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.homiefintracker.HomeTransactionsModel
+import com.example.homiefintracker.R
 
 class HomeRecyclerViewAdapter(private val transactions : List<HomeTransactionsModel>) :
     RecyclerView.Adapter<HomeRecyclerViewAdapter.HomeViewHolder>() {

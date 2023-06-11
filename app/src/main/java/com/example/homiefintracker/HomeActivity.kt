@@ -3,9 +3,7 @@ package com.example.homiefintracker
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
+import com.example.homiefintracker.adapters.ViewPagerAdapter
 import com.example.homiefintracker.databinding.ActivityHomeBinding
 import nl.joery.animatedbottombar.AnimatedBottomBar
 

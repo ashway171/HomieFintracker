@@ -1,0 +1,65 @@
+[33mcommit 97f17d93c0022cdde1456bb85ef126b1d1d6edbc[m[33m ([m[1;36mHEAD -> [m[1;32mAdd-Expense-Activity[m[33m, [m[1;31mupstream/master[m[33m)[m
+Merge: c50c06d 545f44c
+Author: Ateeb Ashfaque <71866976+ashway171@users.noreply.github.com>
+Date:   Wed Nov 30 03:24:00 2022 +0530
+
+    Merge pull request #4 from ashway171/Add-Expense-Activity
+    
+    Add Expense Activity added
+
+[33mcommit 545f44cd18da3eea1150ccc0daf09e281b97c181[m[33m ([m[1;31morigin/Add-Expense-Activity[m[33m)[m
+Author: ash171 <ateebashway171@gmail.com>
+Date:   Wed Nov 30 03:19:56 2022 +0530
+
+    Add Expense Activity added
+
+[33mcommit c50c06d6dc92492d4b280b9ad7d9db6fc6b839bb[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 32b0e51 79d0a02
+Author: Ateeb Ashfaque <71866976+ashway171@users.noreply.github.com>
+Date:   Sat Nov 19 01:57:23 2022 +0530
+
+    Merge pull request #3 from ashway171/add-amount-bottomsheet
+    
+    Add Amount Bottom Sheet
+
+[33mcommit 79d0a02fb038d3e3cc81d5098aca87c432bbbdc6[m[33m ([m[1;31morigin/add-amount-bottomsheet[m[33m, [m[1;32madd-amount-bottomsheet[m[33m)[m
+Author: ash171 <ateebashway171@gmail.com>
+Date:   Sat Nov 19 01:53:48 2022 +0530
+
+    Add Amount Bottom Sheet
+
+[33mcommit 32b0e51c5664eecdef6667202aac03eebd8ab6ba[m
+Merge: 9b4dba3 7a98e0e
+Author: Ateeb Ashfaque <71866976+ashway171@users.noreply.github.com>
+Date:   Thu Nov 10 19:11:22 2022 +0530
+
+    Merge pull request #2 from ashway171/Home-Fragment
+    
+    Home Fragment Layout with placeholders
+
+[33mcommit 7a98e0eae9605fcbe083bbe91a881f666e6c7db6[m[33m ([m[1;31morigin/Home-Fragment[m[33m, [m[1;32mHome-Fragment[m[33m)[m
+Author: ash171 <ateebashway171@gmail.com>
+Date:   Thu Nov 10 19:07:17 2022 +0530
+
+    Home Fragment Layout with placeholders
+
+[33mcommit 9b4dba30a126de9379660756ca9b31ec99252b06[m
+Merge: 6d22f7b efcc51d
+Author: Ateeb Ashfaque <71866976+ashway171@users.noreply.github.com>
+Date:   Sun Oct 30 10:39:29 2022 +0530
+
+    Merge pull request #1 from ashway171/ashway171/Home-Screen
+    
+    Animated Bottom Bar, ViewPager2 and Associated Fragments
+
+[33mcommit efcc51d20bfd58070eac394ff95d4e1b5509d2f9[m[33m ([m[1;31morigin/ashway171/Home-Screen[m[33m, [m[1;32mashway171/Home-Screen[m[33m)[m
+Author: ash171 <ateebashway171@gmail.com>
+Date:   Sun Oct 30 05:38:55 2022 +0530
+
+    Animated Bottom Bar, ViewPager2 and Associated Fragments
+
+[33mcommit 6d22f7b93d43f29e823ef8d167d2b73bf0a3c5fd[m[33m ([m[1;32mmaster[m[33m)[m
+Author: ash171 <ateebashway171@gmail.com>
+Date:   Mon Oct 24 21:47:17 2022 +0530
+
+    Initial Commit
