@@ -1,15 +1,25 @@
 package com.example.homiefintracker
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.homiefintracker.adapters.ExpensesCategoryRVAdapter
 import com.example.homiefintracker.databinding.ActivityAddExpenseBinding
+import com.example.homiefintracker.db.ExpenseDetails
+import com.example.homiefintracker.db.FintrackerDatabase
+import com.example.homiefintracker.repository.FintrackerRepository
+import com.example.homiefintracker.viewmodels.ExpenseViewModel
+import com.example.homiefintracker.viewmodels.ExpenseViewModelFactory
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -21,10 +31,25 @@ class AddExpenseActivity : AppCompatActivity(), ExpensesCategoryRVAdapter.ItemCl
     private lateinit var dateString: String
     private lateinit var categoryName: String
     private var selectedChild: View? = null
+    private var selectedPaymentOption: String? = null
 
+    // Declaring database and mvvm variables
+    private lateinit var database: FintrackerDatabase
+    private lateinit var repository: FintrackerRepository
+    private lateinit var factory: ExpenseViewModelFactory
+    private lateinit var viewModel: ExpenseViewModel
+
+
+    @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_expense)
+
+        // This is meant to be done by DI....not a properly correct approach
+        database = FintrackerDatabase.getDatabase(this)
+        repository = FintrackerRepository(database)
+        factory = ExpenseViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, factory)[ExpenseViewModel::class.java]
 
 
         // Category Recycler View
@@ -88,8 +113,37 @@ class AddExpenseActivity : AppCompatActivity(), ExpensesCategoryRVAdapter.ItemCl
                 // Change the background of the selected child
                 selectedChild?.setBackgroundResource(R.drawable.payment_mode_selected_bg)
 
-                // Perform any additional actions with the selected child
-                // ...
+                // Access the TextView of the Selected PaymentLinearLayout
+                val optionsLinearLayout: LinearLayout = selectedChild as LinearLayout
+
+                val selectedOptionsTV: TextView = optionsLinearLayout.getChildAt(1) as TextView
+
+                selectedPaymentOption = selectedOptionsTV.text.toString()
+            }
+        }
+
+
+        // Save the expense details in the database
+
+        binding.saveTV.setOnClickListener{
+
+            CoroutineScope(Dispatchers.IO).launch {
+                viewModel.insertExpense(
+                    ExpenseDetails(
+                        null,
+                        dateString,
+                        categoryName,
+                        binding.amountET.text.toString(),
+                        binding.nameET.text.toString(),
+                        selectedPaymentOption
+                    )
+                )
+            }.also {
+                Toast.makeText(
+                    this@AddExpenseActivity,
+                    "Expense recorded successfully",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
