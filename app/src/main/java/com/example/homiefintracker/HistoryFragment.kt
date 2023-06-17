@@ -5,55 +5,66 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.homiefintracker.adapters.ExpenseTransactionDeleteInterface
+import com.example.homiefintracker.adapters.HistoryExpenseRVAdapter
+import com.example.homiefintracker.db.ExpenseDetails
+import com.example.homiefintracker.db.FintrackerDatabase
+import com.example.homiefintracker.repository.FintrackerRepository
+import com.example.homiefintracker.viewmodels.ExpenseViewModel
+import com.example.homiefintracker.viewmodels.ExpenseViewModelFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class HistoryFragment : Fragment(), ExpenseTransactionDeleteInterface {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HistoryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HistoryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var layoutView: View
+    private lateinit var mainRV: RecyclerView
+    private lateinit var viewModel: ExpenseViewModel
+    private lateinit var factory: ExpenseViewModelFactory
+    private lateinit var repository: FintrackerRepository
+    private lateinit var database: FintrackerDatabase
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false)
+    ): View {
+        super.onCreateView(inflater, container, savedInstanceState)
+
+        layoutView = inflater.inflate(R.layout.fragment_history, container, false)
+        return layoutView
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HistoryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HistoryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        database = context?.let { FintrackerDatabase.getDatabase(it) }!!
+
+        repository = FintrackerRepository(database)
+
+        factory = ExpenseViewModelFactory(repository)
+
+        viewModel = ViewModelProvider(this, factory)[ExpenseViewModel::class.java]
+
+        // Setting up the RecyclerView
+        mainRV = view.findViewById(R.id.historyRV)
+        mainRV.layoutManager = LinearLayoutManager(context)
+        val historyRVAdapter = HistoryExpenseRVAdapter(requireContext(), this)
+        mainRV.adapter = historyRVAdapter
+
+        // Getting the list with viewModel
+        viewModel.getAllExpenses().observe(viewLifecycleOwner) { list ->
+            list?.let {
+                historyRVAdapter.updateList(it)
             }
+        }
+
     }
+
+    override fun onDeleteIconClick(expense: ExpenseDetails) {
+        viewModel.deleteExpense(expense)
+    }
+
 }

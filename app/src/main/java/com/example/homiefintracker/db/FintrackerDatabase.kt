@@ -5,9 +5,8 @@ import com.example.homiefintracker.Converters
 import androidx.room.*
 
 
-import kotlinx.coroutines.InternalCoroutinesApi
 
-@Database(entities = [ExpenseDetails::class], version = 1, exportSchema = false )
+@Database(entities = [ExpenseDetails::class], version = 2, exportSchema = false )
 @TypeConverters(Converters::class)
 abstract class FintrackerDatabase : RoomDatabase() {
 
@@ -28,6 +27,9 @@ abstract class FintrackerDatabase : RoomDatabase() {
                         FintrackerDatabase::class.java,
                         "fintrackerDB"
                     )
+                        // Must write a migration from version 2 to 3
+                        // Just added category icon to be stored in the database
+                        .fallbackToDestructiveMigration()
                         .build()
                 }
             }
