@@ -6,11 +6,12 @@ import androidx.room.*
 
 
 
-@Database(entities = [ExpenseDetails::class], version = 2, exportSchema = false )
+@Database(entities = [ExpenseDetails::class, DepositDetails::class], version = 4, exportSchema = false )
 @TypeConverters(Converters::class)
 abstract class FintrackerDatabase : RoomDatabase() {
 
     abstract fun expenseDao(): ExpenseDAO
+    abstract fun depositDao(): DepositDAO
 
     companion object {
 

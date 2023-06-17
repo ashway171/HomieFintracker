@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.homiefintracker.repository.FintrackerRepository
 
-class ExpenseViewModelFactory(
+class FintrackerViewModelFactory(
     private val repository: FintrackerRepository
 ) : ViewModelProvider.NewInstanceFactory() {
 

@@ -1,4 +1,4 @@
-package com.example.homiefintracker
+package com.example.homiefintracker.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,37 +9,19 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.homiefintracker.HomeTransactionsModel
+import com.example.homiefintracker.R
 import com.example.homiefintracker.adapters.HomeRecyclerViewAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var transactionObject: ArrayList<HomeTransactionsModel>
     private lateinit var floatingButton: FloatingActionButton
     private lateinit var expenseImageView: ImageView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var depositImageView: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -69,11 +51,18 @@ class HomeFragment : Fragment() {
             dialog?.setContentView(view)
             dialog?.show()
 
-            // Listener for Add Expense Activity
+            // Listener for AddExpenseActivity
             expenseImageView = view.findViewById(R.id.expense_IV_BottomSheet)
             expenseImageView.setOnClickListener{
                 activity?.startActivity(Intent(activity, AddExpenseActivity::class.java))
             }
+
+            // Listener for AddDepositActivity
+            depositImageView = view.findViewById(R.id.deposit_IV_BottomSheet)
+            depositImageView.setOnClickListener {
+                activity?.startActivity(Intent(activity, AddDepositActivity::class.java))
+            }
+
         }
 
     }
@@ -90,25 +79,5 @@ class HomeFragment : Fragment() {
         transactionObject.add(HomeTransactionsModel( R.drawable.ic_calendar,"5,000", "PETROL", ".1%"))
         transactionObject.add(HomeTransactionsModel( R.drawable.ic_calendar,"5,000", "PETROL", ".2%"))
         transactionObject.add(HomeTransactionsModel( R.drawable.ic_expense,"5,000", "PETROL", ".3%"))
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

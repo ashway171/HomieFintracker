@@ -1,28 +1,28 @@
-package com.example.homiefintracker
+package com.example.homiefintracker.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.homiefintracker.R
 import com.example.homiefintracker.adapters.ExpenseTransactionDeleteInterface
 import com.example.homiefintracker.adapters.HistoryExpenseRVAdapter
 import com.example.homiefintracker.db.ExpenseDetails
 import com.example.homiefintracker.db.FintrackerDatabase
 import com.example.homiefintracker.repository.FintrackerRepository
 import com.example.homiefintracker.viewmodels.ExpenseViewModel
-import com.example.homiefintracker.viewmodels.ExpenseViewModelFactory
+import com.example.homiefintracker.viewmodels.FintrackerViewModelFactory
 
 class HistoryFragment : Fragment(), ExpenseTransactionDeleteInterface {
 
     private lateinit var layoutView: View
     private lateinit var mainRV: RecyclerView
     private lateinit var viewModel: ExpenseViewModel
-    private lateinit var factory: ExpenseViewModelFactory
+    private lateinit var factory: FintrackerViewModelFactory
     private lateinit var repository: FintrackerRepository
     private lateinit var database: FintrackerDatabase
 
@@ -44,7 +44,7 @@ class HistoryFragment : Fragment(), ExpenseTransactionDeleteInterface {
 
         repository = FintrackerRepository(database)
 
-        factory = ExpenseViewModelFactory(repository)
+        factory = FintrackerViewModelFactory(repository)
 
         viewModel = ViewModelProvider(this, factory)[ExpenseViewModel::class.java]
 
