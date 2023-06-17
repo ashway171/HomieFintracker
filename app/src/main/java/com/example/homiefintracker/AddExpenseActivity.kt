@@ -30,6 +30,7 @@ class AddExpenseActivity : AppCompatActivity(), ExpensesCategoryRVAdapter.ItemCl
     private lateinit var expenseObject: ArrayList<ExpensesCategoryData>
     private lateinit var dateString: String
     private lateinit var categoryName: String
+    private var categoryIcon: Int? = null
     private var selectedChild: View? = null
     private var selectedPaymentOption: String? = null
 
@@ -69,7 +70,7 @@ class AddExpenseActivity : AppCompatActivity(), ExpensesCategoryRVAdapter.ItemCl
         val date = Date()
         val current = formatter.format(date)
         binding.setDateTV.text = current
-        // dateString = current
+        dateString = current
         // Open calendar by dateDropDownIV and perform operations
         binding.dateDropDownIV.setOnClickListener {
             val calendar = Calendar.getInstance()
@@ -89,7 +90,7 @@ class AddExpenseActivity : AppCompatActivity(), ExpensesCategoryRVAdapter.ItemCl
                     dateString = dateFormat.format(selectedDate)
 
                     // Set the selected date on currentDateTV Text View
-                    binding.setDateTV.text = dateString.toString()
+                    binding.setDateTV.text = dateString
 
                 }, year, month, day)
 
@@ -133,6 +134,7 @@ class AddExpenseActivity : AppCompatActivity(), ExpensesCategoryRVAdapter.ItemCl
                         null,
                         dateString,
                         categoryName,
+                        categoryIcon,
                         binding.amountET.text.toString(),
                         binding.nameET.text.toString(),
                         selectedPaymentOption
@@ -149,9 +151,10 @@ class AddExpenseActivity : AppCompatActivity(), ExpensesCategoryRVAdapter.ItemCl
 
     }
 
-    override fun onItemClick(position: Int, fieldName: String) {
+    override fun onItemClick(position: Int, fieldName: String, iconId: Int) {
         // Handle category item  click event
         categoryName = fieldName
+        categoryIcon = iconId
         Toast.makeText(this, "$fieldName selected", Toast.LENGTH_SHORT).show()
     }
 

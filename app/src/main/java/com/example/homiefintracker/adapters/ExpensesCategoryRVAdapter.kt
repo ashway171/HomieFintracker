@@ -32,6 +32,7 @@ class ExpensesCategoryRVAdapter(private val itemClickListener: ItemClickListener
         val expenseName: TextView = itemView.findViewById(R.id.addExpenseCategoryTV)
         val rootLayout: LinearLayout = itemView.findViewById(R.id.rootLayout)
         private lateinit var fieldName: String
+        private var iconId: Int? = null
 
         init {
             itemView.setOnClickListener(this)
@@ -39,7 +40,7 @@ class ExpensesCategoryRVAdapter(private val itemClickListener: ItemClickListener
         override fun onClick(view: View) {
             val position = adapterPosition
             if (position != RecyclerView.NO_POSITION) {
-                itemClickListener.onItemClick(position, fieldName)
+                iconId?.let { itemClickListener.onItemClick(position, fieldName, it) }
             }
         }
 
@@ -50,6 +51,7 @@ class ExpensesCategoryRVAdapter(private val itemClickListener: ItemClickListener
             expenseName.text = category.expenseName
 
             fieldName = category.expenseName
+            iconId = categories[position].expenseIcon
 
             // Set the background color based on the selected state
             if (selectedItemPosition == adapterPosition) {
@@ -71,7 +73,7 @@ class ExpensesCategoryRVAdapter(private val itemClickListener: ItemClickListener
                     notifyItemChanged(position)
 
                     // Display Toast message with the corresponding field value
-                    itemClickListener.onItemClick(position, fieldName)
+                    itemClickListener.onItemClick(position, fieldName, iconId!!)
                 }
             }
         }
@@ -101,7 +103,7 @@ class ExpensesCategoryRVAdapter(private val itemClickListener: ItemClickListener
     }
 
     interface ItemClickListener {
-        fun onItemClick(position: Int, fieldName: String)
+        fun onItemClick(position: Int, fieldName: String, iconId: Int)
     }
 
 }
