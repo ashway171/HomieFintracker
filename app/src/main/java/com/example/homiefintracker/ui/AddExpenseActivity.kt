@@ -1,4 +1,4 @@
-package com.example.homiefintracker
+package com.example.homiefintracker.ui
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -10,13 +10,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.homiefintracker.ExpensesCategoryData
+import com.example.homiefintracker.R
 import com.example.homiefintracker.adapters.ExpensesCategoryRVAdapter
 import com.example.homiefintracker.databinding.ActivityAddExpenseBinding
 import com.example.homiefintracker.db.ExpenseDetails
 import com.example.homiefintracker.db.FintrackerDatabase
 import com.example.homiefintracker.repository.FintrackerRepository
 import com.example.homiefintracker.viewmodels.ExpenseViewModel
-import com.example.homiefintracker.viewmodels.ExpenseViewModelFactory
+import com.example.homiefintracker.viewmodels.FintrackerViewModelFactory
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -37,7 +39,7 @@ class AddExpenseActivity : AppCompatActivity(), ExpensesCategoryRVAdapter.ItemCl
     // Declaring database and mvvm variables
     private lateinit var database: FintrackerDatabase
     private lateinit var repository: FintrackerRepository
-    private lateinit var factory: ExpenseViewModelFactory
+    private lateinit var factory: FintrackerViewModelFactory
     private lateinit var viewModel: ExpenseViewModel
 
 
@@ -49,7 +51,7 @@ class AddExpenseActivity : AppCompatActivity(), ExpensesCategoryRVAdapter.ItemCl
         // This is meant to be done by DI....not a properly correct approach
         database = FintrackerDatabase.getDatabase(this)
         repository = FintrackerRepository(database)
-        factory = ExpenseViewModelFactory(repository)
+        factory = FintrackerViewModelFactory(repository)
         viewModel = ViewModelProvider(this, factory)[ExpenseViewModel::class.java]
 
 
