@@ -22,6 +22,7 @@ class HomeFragment : Fragment() {
     private lateinit var floatingButton: FloatingActionButton
     private lateinit var expenseImageView: ImageView
     private lateinit var depositImageView: ImageView
+    private lateinit var assetImageView: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,6 +62,12 @@ class HomeFragment : Fragment() {
             depositImageView = view.findViewById(R.id.deposit_IV_BottomSheet)
             depositImageView.setOnClickListener {
                 activity?.startActivity(Intent(activity, AddDepositActivity::class.java))
+            }
+
+            // Listener for AddAssetActivity
+            assetImageView = view.findViewById(R.id.asset_IV_BottomSheet)
+            assetImageView.setOnClickListener {
+                activity?.startActivity(Intent(activity, AddAssetActivity::class.java))
             }
 
         }

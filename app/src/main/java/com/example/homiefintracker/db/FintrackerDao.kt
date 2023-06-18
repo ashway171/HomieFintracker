@@ -36,3 +36,20 @@ interface DepositDAO {
     fun getAllDeposits() : LiveData<List<DepositDetails>>
 
 }
+
+@Dao
+interface AssetDAO {
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAsset(assetDetails: AssetDetails)
+
+    @Update
+    suspend fun updateAsset(assetDetails: AssetDetails)
+
+    @Delete
+    suspend fun deleteAsset(assetDetails: AssetDetails)
+
+    @Query("SELECT * FROM assets order by id DESC")
+    fun getAllAssets() : LiveData<List<AssetDetails>>
+
+}

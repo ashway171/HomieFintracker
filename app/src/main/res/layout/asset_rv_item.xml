@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -11,42 +12,9 @@
         android:background="@drawable/transparent_bg">
 
         <LinearLayout
-            android:id="@+id/historyCategoryLL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="18dp"
-            android:layout_marginEnd="18dp"
-            android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/historyCategoryIconIV"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:padding="4dp"
-            android:layout_marginBottom="12dp"
-            android:layout_gravity="center_horizontal"
-            tools:src="@drawable/cigarettes"
-            android:background="@drawable/local_bg" />
-
-        <TextView
-            android:id="@+id/historyCategoryTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:fontFamily="@font/poppins"
-            tools:text="Entertainment"
-            android:textSize="12sp"
-            android:textColor="@color/white"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/historyOtherDetailsLL"
+            android:id="@+id/assetDetailsLL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/historyCategoryLL"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="12dp"
@@ -54,20 +22,21 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/historyNameTV"
+                android:id="@+id/assetNameTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Aaaradhya Naikwade"
+                tools:text="Stocks"
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
                 android:textSize="16sp"
                 android:fontFamily="@font/poppins"
                 android:singleLine="true"
                 android:ellipsize="marquee"/>
 
             <TextView
-                android:id="@+id/historyDateTV"
+                android:id="@+id/assetDateTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="08-06-23"
@@ -79,7 +48,7 @@
                 android:ellipsize="marquee"/>
 
             <LinearLayout
-                android:id="@+id/historyAmountLL"
+                android:id="@+id/assetAmountLL"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -87,15 +56,16 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginEnd="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="3dp"
                     android:layout_gravity="center"
                     android:src="@drawable/rupee"/>
 
                 <TextView
-                    android:id="@+id/historyAmountTV"
+                    android:id="@+id/assetAmountTV"
                     android:layout_width="wrap_content"
-                    android:layout_height="38dp"
-                    android:layout_marginTop="4.5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4.3dp"
                     android:layout_marginBottom="4dp"
                     android:ellipsize="marquee"
                     android:fontFamily="@font/poppins"
@@ -107,41 +77,11 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/historyPaymentModeLL"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/historyViaTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Via"
-                    android:textColor="@color/white"
-                    android:layout_marginEnd="12dp"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/poppins"
-                    android:singleLine="true"
-                    android:ellipsize="marquee"/>
-
-                <TextView
-                    android:id="@+id/historyPaymentModeTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="Credit"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="4dp"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/poppins"
-                    android:singleLine="true"
-                    android:ellipsize="marquee"/>
-            </LinearLayout>
 
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/historyTransactionDeleteIV"
+            android:id="@+id/assetTransactionDeleteIV"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_alignParentEnd="true"

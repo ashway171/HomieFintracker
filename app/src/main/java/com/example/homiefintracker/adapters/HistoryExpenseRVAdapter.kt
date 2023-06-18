@@ -32,7 +32,7 @@ class HistoryExpenseRVAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.history_item,
+                R.layout.history_expense_item,
                 parent, false
             )
         )
