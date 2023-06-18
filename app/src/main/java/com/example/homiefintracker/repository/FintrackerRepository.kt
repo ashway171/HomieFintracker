@@ -1,6 +1,7 @@
 package com.example.homiefintracker.repository
 
 import androidx.lifecycle.LiveData
+import com.example.homiefintracker.db.AssetDetails
 import com.example.homiefintracker.db.DepositDetails
 import com.example.homiefintracker.db.ExpenseDetails
 import com.example.homiefintracker.db.FintrackerDatabase
@@ -26,5 +27,15 @@ class FintrackerRepository(private val fintrackerDatabase: FintrackerDatabase) {
     suspend fun deleteDeposit(depositDetails: DepositDetails) = fintrackerDatabase.depositDao().deleteDeposit(depositDetails)
 
     fun getAllDeposits(): LiveData<List<DepositDetails>> = fintrackerDatabase.depositDao().getAllDeposits()
+
+
+    // asset methods
+    suspend fun insertAsset(assetDetails: AssetDetails) = fintrackerDatabase.assetDao().insertAsset(assetDetails)
+
+    suspend fun updateAsset(assetDetails: AssetDetails) = fintrackerDatabase.assetDao().updateAsset(assetDetails)
+
+    suspend fun deleteAsset(assetDetails: AssetDetails) = fintrackerDatabase.assetDao().deleteAsset(assetDetails)
+
+    fun getAllAssets(): LiveData<List<AssetDetails>> = fintrackerDatabase.assetDao().getAllAssets()
 
 }

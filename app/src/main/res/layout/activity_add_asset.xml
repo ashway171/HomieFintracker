@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background">
+
+            <LinearLayout
+                android:id="@+id/assetTitleLL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/transparent_bg"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center_vertical"
+                    android:text="Assets"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_money" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/dateRL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/assetTitleLL"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="22dp"
+                android:background="@drawable/transparent_bg"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/dateTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Date: "
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/setDateTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_toEndOf="@id/dateTV"
+                    android:background="@drawable/local_bg"
+                    android:paddingStart="14dp"
+                    android:paddingTop="6dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="6dp"
+                    android:text="DD-MM-YY"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/dateDropDownIV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/local_bg"
+                    android:src="@drawable/expand_more" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/nameLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dateRL"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="22dp"
+                android:background="@drawable/transparent_bg"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/addAssetTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Add Asset"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/nameET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/local_bg"
+                    android:hint="Add Asset Name"
+                    android:inputType="textAutoComplete"
+                    android:padding="6dp"
+                    android:paddingStart="12dp"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/amountLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nameLL"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="22dp"
+                android:background="@drawable/transparent_bg"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/amountTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Amount"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/amountET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/local_bg"
+                    android:hint="₹  "
+                    android:inputType="numberDecimal"
+                    android:padding="6dp"
+                    android:paddingStart="12dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/saveButtonRL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/amountLL"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/transparent_bg"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/saveTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/save_bg"
+                    android:fontFamily="@font/poppins"
+                    android:padding="8dp"
+                    android:text="Save"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/assetRV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/saveButtonRL"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginEnd="22dp"/>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>
